@@ -1,0 +1,269 @@
+/* Leaflet CSS */
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Ocean-inspired design system */
+    --background: 210 20% 98%;
+    --foreground: 208 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 208 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 208 30% 15%;
+
+    /* Deep ocean blue primary */
+    --primary: 208 65% 25%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 208 65% 35%;
+
+    /* Light ocean secondary */
+    --secondary: 190 50% 90%;
+    --secondary-foreground: 208 30% 15%;
+
+    --muted: 190 20% 94%;
+    --muted-foreground: 208 15% 45%;
+
+    /* Aqua accent */
+    --accent: 188 85% 45%;
+    --accent-foreground: 0 0% 100%;
+    --accent-glow: 188 85% 55%;
+
+    /* Coral for alerts */
+    --destructive: 24 95% 53%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 190 20% 85%;
+    --input: 190 20% 92%;
+    --ring: 188 85% 45%;
+
+    --radius: 0.75rem;
+
+    /* Ocean gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(208 65% 25%), hsl(188 85% 45%));
+    --gradient-depth: linear-gradient(180deg, hsl(208 65% 25%), hsl(208 75% 15%));
+    --gradient-surface: linear-gradient(135deg, hsl(188 85% 45%), hsl(188 95% 65%));
+    --gradient-coral: linear-gradient(135deg, hsl(24 95% 53%), hsl(14 90% 48%));
+    
+    /* Shadows with ocean theme */
+    --shadow-ocean: 0 10px 30px -10px hsl(208 65% 25% / 0.3);
+    --shadow-glow: 0 0 40px hsl(188 85% 45% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(208 30% 15% / 0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark ocean depths theme */
+    --background: 208 75% 5%;
+    --foreground: 190 40% 90%;
+
+    --card: 208 65% 8%;
+    --card-foreground: 190 40% 90%;
+
+    --popover: 208 65% 8%;
+    --popover-foreground: 190 40% 90%;
+
+    --primary: 188 85% 45%;
+    --primary-foreground: 208 75% 5%;
+    --primary-glow: 188 85% 55%;
+
+    --secondary: 208 50% 12%;
+    --secondary-foreground: 190 40% 90%;
+
+    --muted: 208 50% 12%;
+    --muted-foreground: 190 20% 60%;
+
+    --accent: 188 85% 45%;
+    --accent-foreground: 208 75% 5%;
+    --accent-glow: 188 85% 55%;
+
+    --destructive: 24 95% 53%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 208 50% 15%;
+    --input: 208 50% 15%;
+    --ring: 188 85% 45%;
+
+    /* Dark ocean gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(188 85% 45%), hsl(208 65% 25%));
+    --gradient-depth: linear-gradient(180deg, hsl(208 75% 5%), hsl(208 85% 3%));
+    --gradient-surface: linear-gradient(135deg, hsl(188 85% 45%), hsl(188 95% 65%));
+    --gradient-coral: linear-gradient(135deg, hsl(24 95% 53%), hsl(14 90% 48%));
+    
+    /* Enhanced dark shadows */
+    --shadow-ocean: 0 10px 30px -10px hsl(188 85% 45% / 0.4);
+    --shadow-glow: 0 0 40px hsl(188 85% 45% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(208 75% 5% / 0.8);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Ocean-themed utility classes */
+  .gradient-ocean {
+    background: var(--gradient-ocean);
+  }
+  
+  .gradient-depth {
+    background: var(--gradient-depth);
+  }
+  
+  .gradient-surface {
+    background: var(--gradient-surface);
+  }
+  
+  .gradient-coral {
+    background: var(--gradient-coral);
+  }
+  
+  .shadow-ocean {
+    box-shadow: var(--shadow-ocean);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Ocean wave animation */
+  .wave-animation {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .wave-animation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: wave 2s infinite;
+  }
+  
+  @keyframes wave {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Hover scale effect */
+  .hover-scale {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Custom map markers */
+  .custom-marker-container {
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  .custom-marker-high {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ef4444;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: pulse 2s infinite;
+  }
+  
+  .custom-marker-medium {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #f97316;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: pulse 2s infinite;
+  }
+  
+  .custom-marker-low {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #eab308;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  /* Leaflet popup customization */
+  .leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 4px 20px -4px rgba(0,0,0,0.1);
+  }
+
+  /* Custom cluster markers */
+  .custom-cluster-marker {
+    background: transparent !important;
+    border: none !important;
+    pointer-events: auto;
+  }
+
+  .custom-cluster-marker div {
+    transition: transform 0.2s ease;
+  }
+
+  .custom-cluster-marker:hover div {
+    transform: scale(1.1);
+  }
+}
